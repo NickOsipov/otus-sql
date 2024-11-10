@@ -3,3 +3,5 @@
 connection.yaml
 .env
 .vscode
+.venv
+venv
