@@ -3,7 +3,7 @@ version: '3.8'
 services:
   postgres:
     image: postgres:15
-    container_name: otus-sql-demo-postgres
+    container_name: otus-local-postgres
     environment:
       - POSTGRES_HOST_AUTH_METHOD=trust
     ports:
