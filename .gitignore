@@ -5,3 +5,5 @@ connection.yaml
 .vscode
 .venv
 venv
+__pycache__
+buf
