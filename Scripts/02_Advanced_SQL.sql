@@ -39,7 +39,7 @@ SELECT DISTINCT b.*
 FROM bookings b
     INNER JOIN tickets t
        ON b.book_ref = t.book_ref
-WHERE b.total_amount > 100000
+where b.total_amount > 100000
 ORDER BY b.book_ref
 LIMIT 10;
 
@@ -54,7 +54,7 @@ WHERE fare_conditions = 'Business';
 SELECT flight_no, aircraft_code
 FROM flights f
 WHERE aircraft_code IN (
-    SELECT aircraft_code
+    SELECT DISTINCT aircraft_code
     FROM seats s
     WHERE fare_conditions = 'Business'
 );
@@ -112,8 +112,8 @@ FROM airports a;
 -- Получим все рейсы вылетающие из Москвы
 SELECT DISTINCT f.flight_no, f.departure_airport AS airport_code
 FROM flights f
-JOIN airports_data ad
-ON f.departure_airport = ad.airport_code
+    JOIN airports_data ad
+     	ON f.departure_airport = ad.airport_code
 WHERE f.departure_airport IN (
     SELECT ad.airport_code
     FROM airports_data ad
