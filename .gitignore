@@ -10,3 +10,12 @@ buf
 archive.zip
 archive
 *.zip
+*.tar.gz
+*.tar
+.DS_Store
+*.log
+*.pyc
+*.pyo
+*.pyd
+*.csv
+*.parquet
