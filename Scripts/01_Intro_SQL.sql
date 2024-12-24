@@ -1,3 +1,4 @@
+-- Active: 1735067391782@@45.134.254.239@5432@demo
 -- 01 СТРУКТУРА БАЗЫ ДАННЫХ
 -- Получить все доступные нам схемы данных
 SELECT schemaname, tablename, tableowner
@@ -15,8 +16,10 @@ WHERE schemaname = 'bookings';
 -- Получить все поля определенной таблицы в виде списка
 SELECT column_name
 FROM information_schema.columns
-WHERE table_schema = 'bookings'
-  AND table_name   = 'flights';
+WHERE
+    table_schema = 'bookings'
+    AND
+    table_name   = 'flights';
 
 -- 04
 -- Получить все поля определенной таблицы в виде таблицы
@@ -120,8 +123,10 @@ LIMIT 100;
 SELECT DISTINCT aircraft_code
 FROM seats
 GROUP BY aircraft_code
-HAVING SUM(CASE WHEN fare_conditions = 'Economy' THEN 1 ELSE 0 END) > 0
-   AND SUM(CASE WHEN fare_conditions IN ('Business', 'Comfort') THEN 1 ELSE 0 END) = 0;
+HAVING
+    SUM(CASE WHEN fare_conditions = 'Economy' THEN 1 ELSE 0 END) > 0
+    AND
+    SUM(CASE WHEN fare_conditions IN ('Business', 'Comfort') THEN 1 ELSE 0 END) = 0;
 
 -- 19 ПОИСК ПО ПОДСТРОКЕ
 -- Фильтрация по подстроке
@@ -191,7 +196,7 @@ LIMIT 20;
 -- Эта функция позволяет усечь дату до указанного компонента,
 -- такого как месяц, год и т.д.
 SELECT
-    date_trunc('month', book_date) AS month,
+  date_trunc('month', book_date) AS month,
 	SUM(total_amount) AS total_sales
 FROM bookings
 GROUP BY date_trunc('month', book_date)

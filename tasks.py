@@ -8,8 +8,7 @@ import os
 from invoke import task
 from invoke.context import Context
 
-POSTGRES_PATH = os.path.join("infrastructure", "postgres")
-
+POSTGRES_PATH = os.path.join("infra", "postgres")
 
 @task
 def hello(cxt, word="World"):
